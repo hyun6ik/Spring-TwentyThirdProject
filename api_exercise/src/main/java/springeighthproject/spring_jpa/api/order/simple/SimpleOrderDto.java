@@ -1,4 +1,4 @@
-package springeighthproject.spring_jpa.api.order;
+package springeighthproject.spring_jpa.api.order.simple;
 
 import lombok.Data;
 import springeighthproject.spring_jpa.domain.Address;

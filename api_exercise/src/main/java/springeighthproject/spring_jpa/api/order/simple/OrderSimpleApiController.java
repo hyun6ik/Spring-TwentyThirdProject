@@ -1,4 +1,4 @@
-package springeighthproject.spring_jpa.api.order;
+package springeighthproject.spring_jpa.api.order.simple;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;

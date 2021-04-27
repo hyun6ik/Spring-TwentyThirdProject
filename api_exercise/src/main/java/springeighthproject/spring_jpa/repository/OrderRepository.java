@@ -3,8 +3,7 @@ package springeighthproject.spring_jpa.repository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
-import springeighthproject.spring_jpa.api.Result;
-import springeighthproject.spring_jpa.api.order.OrderSimpleQueryDto;
+import springeighthproject.spring_jpa.api.order.simple.OrderSimpleQueryDto;
 import springeighthproject.spring_jpa.domain.Member;
 import springeighthproject.spring_jpa.domain.Order;
 
@@ -26,6 +25,10 @@ public class OrderRepository {
 
     public Order findOne(Long id){
         return em.find(Order.class, id);
+    }
+
+    public List<Order> findAll(){
+        return em.createQuery("select o from Order o", Order.class).getResultList();
     }
 
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
