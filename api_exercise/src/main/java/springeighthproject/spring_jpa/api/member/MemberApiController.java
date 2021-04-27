@@ -2,6 +2,7 @@ package springeighthproject.spring_jpa.api.member;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import springeighthproject.spring_jpa.api.Result;
 import springeighthproject.spring_jpa.api.member.dto.*;
 import springeighthproject.spring_jpa.domain.Member;
 import springeighthproject.spring_jpa.service.MemberService;
