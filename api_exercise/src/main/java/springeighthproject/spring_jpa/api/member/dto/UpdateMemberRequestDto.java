@@ -1,4 +1,4 @@
-package springeighthproject.spring_jpa.api.member;
+package springeighthproject.spring_jpa.api.member.dto;
 
 import lombok.Data;
 import springeighthproject.spring_jpa.domain.Address;
@@ -8,7 +8,7 @@ import springeighthproject.spring_jpa.domain.Order;
 import java.util.List;
 
 @Data
-public class CreateMemberRequestDto {
+public class UpdateMemberRequestDto {
 
     private String name;
     private Address address;

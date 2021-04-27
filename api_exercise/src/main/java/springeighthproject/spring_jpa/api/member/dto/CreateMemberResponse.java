@@ -1,4 +1,4 @@
-package springeighthproject.spring_jpa.api.member;
+package springeighthproject.spring_jpa.api.member.dto;
 
 import lombok.Data;
 
