@@ -1,14 +1,12 @@
 package springeighthproject.spring_jpa.api.order;
 
 import lombok.RequiredArgsConstructor;
-import org.aspectj.weaver.ast.Or;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import springeighthproject.spring_jpa.api.Result;
 import springeighthproject.spring_jpa.domain.Order;
 import springeighthproject.spring_jpa.repository.OrderRepository;
 import springeighthproject.spring_jpa.repository.OrderSearch;
-import springeighthproject.spring_jpa.service.OrderService;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +22,7 @@ import java.util.stream.Collectors;
 public class OrderSimpleApiController {
 
     private final OrderRepository orderRepository;
+    private final OrderSimpleQueryRepository orderSimpleQueryRepository;
 
     @GetMapping("/api/v1/simple-orders")
     public List<Order> ordersV1(){
@@ -52,6 +51,18 @@ public class OrderSimpleApiController {
         List<SimpleOrderDto> collect = orders.stream()
                 .map(o -> new SimpleOrderDto(o))
                 .collect(Collectors.toList());
+        return new Result(collect);
+    }
+
+    @GetMapping("/api/v4/simple-orders")
+    public Result<List<OrderSimpleQueryDto>> ordersV4(){
+        List<OrderSimpleQueryDto> collect = orderRepository.findOrdersDtos();
+        return new Result(collect);
+    }
+
+    @GetMapping("/api/v5/simple-orders")
+    public Result<List<OrderSimpleQueryDto>> ordersV5(){
+        List<OrderSimpleQueryDto> collect = orderSimpleQueryRepository.findOrderDtos();
         return new Result(collect);
     }
 }
