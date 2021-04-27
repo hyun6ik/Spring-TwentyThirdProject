@@ -20,4 +20,11 @@ public class MemberApiController {
         Long id = memberService.join(member);
         return CreateMemberResponse.of(id, "성공");
     }
+
+    @PostMapping("/api/v2/members")
+    public CreateMemberResponse saveMemberV2(@RequestBody @Valid CreateMemberRequestDto dto){
+
+        Long id = memberService.join(dto.toEntity());
+        return CreateMemberResponse.of(id,"DTO로 성공");
+    }
 }

@@ -1,6 +1,8 @@
 package springeighthproject.spring_jpa.domain;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -24,4 +27,12 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
+
+
+    @Builder
+    public Member(String name, Address address, List<Order> orders) {
+        this.name = name;
+        this.address = address;
+        this.orders = orders;
+    }
 }
