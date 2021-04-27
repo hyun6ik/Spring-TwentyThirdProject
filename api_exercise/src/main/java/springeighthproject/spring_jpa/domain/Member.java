@@ -35,4 +35,8 @@ public class Member {
         this.address = address;
         this.orders = orders;
     }
+
+    public void changeName(String name){
+        this.name = name;
+    }
 }

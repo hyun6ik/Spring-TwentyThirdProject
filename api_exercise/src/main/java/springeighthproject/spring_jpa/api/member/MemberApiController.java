@@ -1,9 +1,7 @@
 package springeighthproject.spring_jpa.api.member;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import springeighthproject.spring_jpa.domain.Member;
 import springeighthproject.spring_jpa.service.MemberService;
 
@@ -26,5 +24,13 @@ public class MemberApiController {
 
         Long id = memberService.join(dto.toEntity());
         return CreateMemberResponse.of(id,"DTO로 성공");
+    }
+
+    @PutMapping("/api/v2/members/{id}")
+    public UpdateMemberResponse updateMemberV2(@PathVariable("id") Long id,@RequestBody @Valid UpdateMemberRequestDto dto){
+        memberService.update(id, dto.getName());
+        Member findMember = memberService.findOne(id);
+        return UpdateMemberResponse.of(findMember.getId(), findMember.getName(),"성공");
+
     }
 }
