@@ -25,18 +25,18 @@ public class ItemController {
         return "items/createItemForm";
     }
 
-    @PostMapping("items/new")
-    public String create(BookForm form) {
-        Book book = new Book();
-        book.setName(form.getName());
-        book.setPrice(form.getPrice());
-        book.setStockQuantity(form.getStockQuantity());
-        book.setAuthor(form.getAuthor());
-        book.setIsbn(form.getIsbn());
-
-        itemService.saveItem(book);
-        return "redirect:/items";
-    }
+//    @PostMapping("items/new")
+//    public String create(BookForm form) {
+//        Book book = new Book();
+//        book.setName(form.getName());
+//        book.setPrice(form.getPrice());
+//        book.setStockQuantity(form.getStockQuantity());
+//        book.setAuthor(form.getAuthor());
+//        book.setIsbn(form.getIsbn());
+//
+//        itemService.saveItem(book);
+//        return "redirect:/items";
+//    }
 
     @GetMapping("items")
     public String list(Model model){

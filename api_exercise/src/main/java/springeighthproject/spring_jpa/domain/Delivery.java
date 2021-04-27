@@ -1,6 +1,8 @@
 package springeighthproject.spring_jpa.domain;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +11,7 @@ import static javax.persistence.FetchType.*;
 
 @Entity
 @Getter @Setter
+@NoArgsConstructor
 public class Delivery {
     @Id
     @GeneratedValue
@@ -22,4 +25,9 @@ public class Delivery {
 
     @Enumerated(EnumType.STRING)
     private DeliveryStatus status;
+
+    @Builder
+    public Delivery(Address address) {
+        this.address = address;
+    }
 }

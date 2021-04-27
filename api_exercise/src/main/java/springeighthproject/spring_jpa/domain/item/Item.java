@@ -1,6 +1,8 @@
 package springeighthproject.spring_jpa.domain.item;
 
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import springeighthproject.spring_jpa.domain.Category;
 import springeighthproject.spring_jpa.domain.exception.NotEnoughStockException;
@@ -13,6 +15,7 @@ import java.util.List;
 @Getter @Setter
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "dtype")
+@NoArgsConstructor
 public abstract class Item {
     @Id @GeneratedValue
     @Column(name = "item_id")
@@ -25,6 +28,13 @@ public abstract class Item {
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
 
+
+    public Item(String name, int price, int stockQuantity, List<Category> categories) {
+        this.name = name;
+        this.price = price;
+        this.stockQuantity = stockQuantity;
+        this.categories = categories;
+    }
 
     //== 비즈니스 로직 ==//
     //재고 수량 증가 로직
