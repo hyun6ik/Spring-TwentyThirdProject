@@ -2,6 +2,7 @@ package springeighthproject.spring_jpa.api.order.query;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import springeighthproject.spring_jpa.domain.Address;
 import springeighthproject.spring_jpa.domain.OrderStatus;
 
@@ -9,6 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@EqualsAndHashCode(of = "orderId")
 public class OrderQueryDto {
 
     private Long orderId;
@@ -34,4 +36,6 @@ public class OrderQueryDto {
         this.orderStatus = orderStatus;
         this.address = address;
     }
+
+
 }

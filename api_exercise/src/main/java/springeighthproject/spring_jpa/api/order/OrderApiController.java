@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springeighthproject.spring_jpa.api.Result;
+import springeighthproject.spring_jpa.api.order.query.OrderFlatDto;
 import springeighthproject.spring_jpa.api.order.query.OrderQueryDto;
 import springeighthproject.spring_jpa.api.order.query.OrderQueryRepository;
 import springeighthproject.spring_jpa.api.order.query.OrderQueryService;
@@ -97,5 +98,11 @@ public class OrderApiController {
     @GetMapping("/api/v5/orders")
     public Result<List<OrderQueryDto>> ordersV5() {
         return orderQueryService.findAllByDto_optimization();
+    }
+
+    @GetMapping("/api/v6/orders")
+    public Result<List<OrderQueryDto>> ordersV6(){
+        List<OrderQueryDto> collect = orderQueryService.findAllByDto_flat();
+        return new Result(collect);
     }
 }

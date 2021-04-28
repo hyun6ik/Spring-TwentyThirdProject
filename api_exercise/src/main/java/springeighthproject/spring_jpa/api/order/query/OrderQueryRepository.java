@@ -23,4 +23,13 @@ public interface OrderQueryRepository extends JpaRepository<Order, Long> {
             " from OrderItem oi join oi.item i where oi.order.id in :orderIds")
     List<OrderItemQueryDto> findOrderItems_Optimization(@Param("orderIds") List<Long> orderIds);
 
+    @Query("select new springeighthproject.spring_jpa.api.order.query.OrderFlatDto(" +
+            "o.id, m.name, o.orderDate, o.status, d.address, i.name, oi.orderPrice, oi.count)" +
+            " from Order o" +
+            " join o.member m" +
+            " join o.delivery d" +
+            " join o.orderItems oi" +
+            " join oi.item i")
+    List<OrderFlatDto> findAllByDto_flat();
+
 }
