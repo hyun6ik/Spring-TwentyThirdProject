@@ -15,9 +15,10 @@ public class InitDb {
     private final InitService initService;
 
     @PostConstruct
-    public void init() {
+    public void init(){
         initService.dbInit1();
         initService.dbInit2();
+
     }
 
 
@@ -27,9 +28,8 @@ public class InitDb {
     static class InitService {
 
         private final EntityManager em;
-
-        public void dbInit1() {
-            Member member = createMember("userA", "서울", "목동", "1111");
+        public void dbInit1(){
+            Member member = createMember("userA","서울", "목동", "1111");
             em.persist(member);
 
             Book book1 = createBook("JPA1 BOOK", 10000, 100);
@@ -46,6 +46,9 @@ public class InitDb {
             Order order = Order.createorder(member, delivery, orderItem1, orderItem2);
             em.persist(order);
         }
+
+
+
         public void dbInit2(){
             Member member = createMember("userB","부산", "서면", "2222");
             em.persist(member);
@@ -81,9 +84,13 @@ public class InitDb {
 
         private Member createMember(String name, String city, String street, String zipcode) {
             Member member1 = new Member();
-            member1.setName("userA");
+            member1.setName("name");
             member1.setAddress(new Address(city, street, zipcode));
             return member1;
         }
+
     }
+
+
+
 }
