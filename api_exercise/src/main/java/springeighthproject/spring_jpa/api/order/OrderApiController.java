@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import springeighthproject.spring_jpa.api.Result;
+import springeighthproject.spring_jpa.api.order.query.OrderQueryDto;
+import springeighthproject.spring_jpa.api.order.query.OrderQueryRepository;
+import springeighthproject.spring_jpa.api.order.query.OrderQueryService;
 import springeighthproject.spring_jpa.domain.Order;
 import springeighthproject.spring_jpa.domain.OrderItem;
 import springeighthproject.spring_jpa.repository.OrderRepository;
@@ -21,6 +24,7 @@ public class OrderApiController {
 
     private final OrderRepository orderRepository;
     private final OrderApiRepository orderApiRepository;
+    private final OrderQueryService orderQueryService;
 
     @GetMapping("/api/v1/orders")
     public Result<List<Order>> ordersV1(){
@@ -83,5 +87,10 @@ public class OrderApiController {
                 .collect(Collectors.toList());
         return new Result(collect);
 
+    }
+
+    @GetMapping("/api/v4/orders")
+    public Result<List<OrderQueryDto>>  ordersV4(){
+       return new Result(orderQueryService.findOrderQueryDtos());
     }
 }

@@ -43,7 +43,7 @@ public class Order {
         member.getOrders().add(this);
     }
 
-    public void addorderItem(OrderItem orderItem){
+    public void addOrderItem(OrderItem orderItem){
         orderItems.add(orderItem);
         orderItem.setOrder(this);
     }
@@ -54,13 +54,15 @@ public class Order {
     }
 
 
+
+
     //== 생성 메서드 ==//
     public static Order createorder(Member member ,Delivery delivery, OrderItem... orderItems){
         Order order = new Order();
         order.setMember(member);
         order.setDelivery(delivery);
         for (OrderItem orderItem : orderItems) {
-            order.addorderItem(orderItem);
+            order.addOrderItem(orderItem);
         }
         order.setStatus(OrderStatus.ORDER);
         order.setOrderDate(LocalDateTime.now());
